@@ -1,0 +1,120 @@
+body {
+  background-color: hsl(0, 0%, 2%);
+  cursor: default;
+}
+p {
+  font-family: Arial, sans-serif;
+  color: white;
+  font-size: 18px;
+}
+.main-title {
+  font-size: 48px;
+}
+.game-container {
+  text-align: center;
+}
+.choice-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.game-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  background-color: black;
+  border: 6px solid white;
+  cursor: pointer;
+  transition: border-width 0.15s, background-color 0.15s;
+}
+.game-icon {
+  width: 100px;
+}
+.game-title {
+  position: relative;
+  width: 0px;
+  margin: 10px auto;
+  display: block;
+}
+.game-button:hover {
+  border-width: 12px;
+}
+.game-button:active {
+  background-color: hsl(0, 0%, 30%);
+}
+.game-button:hover ~ .game-title {
+  animation: title-animation 2s;
+}
+.game-button:hover .game-icon {
+  animation: icon-animation 2s ease-in-out;
+}
+@keyframes title-animation {
+  0% {
+    width: 0px;
+    opacity: 0;
+  }
+  25% {
+    width: 160px;
+    opacity: 0.8;
+  }
+  50% {
+    width: 150px;
+    opacity: 1;
+  }
+  75% {
+    width: 160px;
+    opacity: 1;
+  }
+  100% {
+    width: 0px;
+    opacity: 0;
+  }
+}
+@keyframes icon-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.stats-container {
+  position: absolute;
+  top: 450px;
+  width: 600px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 10px;
+}
+.reset-button {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  border: none;
+  background-color: rgb(97, 68, 14);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.reset-button:hover {
+  filter: brightness(0.8);
+  text-shadow: 2px 2px 2px black;
+}
+.reset-button:active {
+  opacity: 0.8;
+}
