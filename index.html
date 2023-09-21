@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <!--Written by Scot Stewart | personalError-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./resources/css/index.css" />
     <title>personalError | Rock Paper Scissors</title>
   </head>
   <body>
+    <p class="author-details">Scot Stewart | personalError | Rock Paper Scissors v1.1</p>
     <div class="game-container">
-      <p class="main-title">Rock Paper Scissors!</p>
+      <p class="main-title">Rock, Paper, Scissors!</p>
       <div class="choice-container">
         <div class="rock-container">
           <button class="game-button" onclick="
@@ -16,35 +20,27 @@
                 computerMove = 'rock';
               } else if (randomNumber === 1) {
                 computerMove = 'paper';
-              } else if (randomNumber === 2) {
-                computerMove = 'scissors'
+              } else if(randomNumber === 2) {
+                computerMove = 'scissors';
               }
               if (computerMove === 'rock') {
-                result = 'draw'
-              } else if (computerMove === 'paper') {
-                result = 'lose'
-              } else if (computerMove === 'scissors') {
-                result = 'win'
-              }
-              if (result === 'win') {
-                wins += 1;
-                displayResult = 'You Win!'
-                document.getElementById('win-counter').innerText = wins;
-              } else if (result === 'lose') {
-                losses += 1;
-                displayResult = 'You Lose!'
-                document.getElementById('loss-counter').innerText = losses;
-              } else if (result === 'draw') {
+                result = 'Game is a Draw!';
                 draws += 1;
-                displayResult = 'Its a Draw!'
-                document.getElementById('draw-counter').innerText = draws;
+                document.getElementById('draw-counter').innerText = draws; 
+              } else if (computerMove === 'paper') {
+                result = 'You Lose!';
+                losses += 1;
+                document.getElementById('loss-counter').innerText = losses;
+              } else if (computerMove === 'scissors') {
+                result = 'You Win!'
+                wins += 1;
+                document.getElementById('win-counter').innerText = wins;
               }
-              document.getElementById('lets-play').innerText = `You selected rock. The Computer selected ${computerMove}. ${displayResult}`;
+              document.getElementById('lets-play').innerText = `You threw rock. The Computer threw ${computerMove}. ${result}`;
             ">
-            <img src="./resources/images/rock-icon.png" class="game-icon" />
+            <img class="choice-icon" src="./resources/images/rock-icon.png" />
           </button>
-      
-          <img src="./resources/images/rock-title.png" class="game-title" />
+          <img class="choice-title" src="./resources/images/rock-title.png" />
         </div>
         <div class="paper-container">
           <button class="game-button" onclick="
@@ -53,34 +49,27 @@
                 computerMove = 'rock';
               } else if (randomNumber === 1) {
                 computerMove = 'paper';
-              } else if (randomNumber === 2) {
-                computerMove = 'scissors'
+              } else if(randomNumber === 2) {
+                computerMove = 'scissors';
               }
               if (computerMove === 'rock') {
-                result = 'win'
-              } else if (computerMove === 'paper') {
-                result = 'draw'
-              } else if (computerMove === 'scissors') {
-                result = 'lose'
-              }
-              if (result === 'win') {
+                result = 'You Win!';
                 wins += 1;
-                displayResult = 'You Win!'
-                document.getElementById('win-counter').innerText = wins;
-              } else if (result === 'lose') {
-                losses += 1;
-                displayResult = 'You Lose!'
-                document.getElementById('loss-counter').innerText = losses;
-              } else if (result === 'draw') {
+                document.getElementById('win-counter').innerText = wins; 
+              } else if (computerMove === 'paper') {
+                result = 'Game is a Draw!';
                 draws += 1;
-                displayResult = 'Its a Draw!'
                 document.getElementById('draw-counter').innerText = draws;
+              } else if (computerMove === 'scissors') {
+                result = 'You Lose!'
+                losses += 1;
+                document.getElementById('loss-counter').innerText = losses;
               }
-              document.getElementById('lets-play').innerText = `You selected paper. The Computer selected ${computerMove}. ${displayResult}`;
+              document.getElementById('lets-play').innerText = `You threw paper. The Computer threw ${computerMove}. ${result}`;
             ">
-            <img src="./resources/images/paper-icon.png" class="game-icon" />
+            <img class="choice-icon" src="./resources/images/paper-icon.png" />
           </button>
-          <img src="./resources/images/paper-title.png" class="game-title" />
+          <img class="choice-title" src="./resources/images/paper-title.png" />
         </div>
         <div class="scissors-container">
           <button class="game-button" onclick="
@@ -89,61 +78,54 @@
                 computerMove = 'rock';
               } else if (randomNumber === 1) {
                 computerMove = 'paper';
-              } else if (randomNumber === 2) {
-                computerMove = 'scissors'
+              } else if(randomNumber === 2) {
+                computerMove = 'scissors';
               }
               if (computerMove === 'rock') {
-                result = 'lose'
-              } else if (computerMove === 'paper') {
-                result = 'win'
-              } else if (computerMove === 'scissors') {
-                result = 'draw'
-              }
-              if (result === 'win') {
-                wins += 1;
-                displayResult = 'You Win!'
-                document.getElementById('win-counter').innerText = wins;
-              } else if (result === 'lose') {
+                result = 'You Lose!';
                 losses += 1;
-                displayResult = 'You Lose!'
-                document.getElementById('loss-counter').innerText = losses;
-              } else if (result === 'draw') {
+                document.getElementById('loss-counter').innerText = losses; 
+              } else if (computerMove === 'paper') {
+                result = 'You Win!';
+                wins += 1;
+                document.getElementById('win-counter').innerText = wins;
+              } else if (computerMove === 'scissors') {
+                result = 'Game is a Draw!'
                 draws += 1;
-                displayResult = 'Its a Draw!'
                 document.getElementById('draw-counter').innerText = draws;
               }
-              document.getElementById('lets-play').innerText = `You selected scissors. The Computer selected ${computerMove}. ${displayResult}`;
+              document.getElementById('lets-play').innerText = `You threw scissors. The Computer threw ${computerMove}. ${result}`;
             ">
-            <img src="./resources/images/scissors-icon.png" class="game-icon" />
+            <img class="choice-icon" src="./resources/images/scissors-icon.png" />
           </button>
-          <img src="./resources/images/scissors-title.png" class="game-title" />
-        </div>  
+          <img class="choice-title" src="./resources/images/scissors-title.png" />
+        </div>
       </div>
       <div class="stats-container">
         <p id="lets-play">Let's Play!</p>
-        <p>Wins: <span id="win-counter">0</span></p>
-        <P>Losses: <span id="loss-counter">0</span></P>
-        <p>Draws: <span id="draw-counter">0</span></p>
+        <hr>
+        <p class="stats">Wins: <span id="win-counter">0</span></p>
+        <p class="stats">Losses: <span id="loss-counter">0</span></p>
+        <p class="stats">Draws: <span id="draw-counter">0</span></p>
+        <hr>
         <button class="reset-button" onclick="
           if (wins === 0 && losses === 0 && draws === 0) {
-            document.getElementById('lets-play').innerText = 'Score already reset! Let\'s Play!'
+            document.getElementById('lets-play').innerText = 'Score is already reset! Let\'s Play!';
           } else {
+            document.getElementById('lets-play').innerText = 'Score reset! Let\'s Play!';
             wins = 0;
-            document.getElementById('win-counter').innerText = wins;
+            document.getElementById('win-counter').innerText = 0;
             losses = 0;
-            document.getElementById('loss-counter').innerText = losses;
+            document.getElementById('loss-counter').innerText = 0;
             draws = 0;
-            document.getElementById('draw-counter').innerText = draws;
-            document.getElementById('lets-play').innerText = 'Score reset! Let\'s Play';
+            document.getElementById('draw-counter').innerText = 0;
           }
-          
         ">Reset Score</button>
       </div>
     </div>
     <script>
       let randomNumber = 0;
       let computerMove = '';
-      let displayResult = '';
       let result = '';
       let wins = 0;
       let losses = 0;
