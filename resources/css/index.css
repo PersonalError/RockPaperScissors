@@ -5,9 +5,14 @@ body {
   margin: 0;
   cursor: default;
 }
+p, button, h1 {
+  font-family: 'Oswold', sans-serif;
+  color: hsl(0, 0%, 90%);
+  font-weight: bold;
+  text-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+}
 .author-details {
   position: relative;
-  color: white;
   font-size: 12px;
   top: 5px;
   left: 8px;
@@ -28,10 +33,7 @@ body {
   margin-bottom: 50px;
   text-align: center;
   top: 20px;
-  color: hsl(0, 0%, 90%);
   font-size: 42px;
-  font-family: 'Oswold', sans-serif;
-  font-weight: bold;
 }
 .choice-container {
   width: 800px;
@@ -80,10 +82,7 @@ body {
 }
 #lets-play {
   position: relative;
-  color: white;
-  font-family: 'Oswold', sans-serif;
   font-size: 24px;
-  text-shadow: 2px 2px 2px hsla(0, 0%, 0%, 1);
   text-align: center;
   margin-top: 30px;
 }
@@ -99,11 +98,8 @@ hr {
   text-align: center;
 }
 .stats {
-  font-family: 'Oswold', sans-serif;
-  color: hsl(0, 0%, 90%);
   font-size: 18px;
   text-align: center;
-  text-shadow: 5px 5px 5px hsl(0, 0%, 0%);
 }
 .reset-button {
   width: 180px;
@@ -111,9 +107,7 @@ hr {
   border-radius: 25px;
   border: 4px solid white;
   background-color: hsl(0, 0%, 0%);
-  color: hsl(0, 0%, 90%);
   font-size: 18px;
-  font-weight: bold;
   margin-top: 30px;
   margin-bottom: 20px;
   cursor: pointer;

@@ -9,16 +9,16 @@
     <title>personalError | Rock Paper Scissors</title>
   </head>
   <body>
-    <p class="author-details">Scot Stewart | personalError | Rock Paper Scissors v1.2</p>
+    <!--A paragraph to display the version of the game-->
+    <p class="author-details">Scot Stewart | personalError | Rock Paper Scissors v1.2.5</p>
+    <!-- The main container for all the game components-->
     <div class="game-container">
-      <p class="main-title">Rock, Paper, Scissors!</p>
+      <h1 class="main-title">Rock, Paper, Scissors!</h1>
+      <!--The container for the rock, paper, and scissor buttons-->
       <div class="choice-container">
         <div class="rock-container">
           <button class="game-button" onclick="
-              playerMove = 'rock'
-              getComputerMove();
-              playerPickedRock();
-              displayResult();
+              playGame('rock');
             ">
             <img class="choice-icon" src="./resources/images/rock-icon.png" />
           </button>
@@ -26,10 +26,7 @@
         </div>
         <div class="paper-container">
           <button class="game-button" onclick="
-              playerMove = 'paper';
-              getComputerMove();
-              playerPickedPaper();
-              displayResult();
+              playGame('paper');
             ">
             <img class="choice-icon" src="./resources/images/paper-icon.png" />
           </button>
@@ -37,16 +34,14 @@
         </div>
         <div class="scissors-container">
           <button class="game-button" onclick="
-              playerMove = 'scissors';
-              getComputerMove();
-              playerPickedScissors();
-              displayResult();
+              playGame('scissors');
             ">
             <img class="choice-icon" src="./resources/images/scissors-icon.png" />
           </button>
           <img class="choice-title" src="./resources/images/scissors-title.png" />
         </div>
       </div>
+      <!-- The container for the game stats. Will display the result and count the score-->
       <div class="stats-container">
         <p id="lets-play">Let's Play!</p>
         <hr>
@@ -54,94 +49,84 @@
         <p class="stats">Losses: <span id="loss-counter">0</span></p>
         <p class="stats">Draws: <span id="draw-counter">0</span></p>
         <hr>
+        <!--A button to reset the scores to zero-->
         <button class="reset-button" onclick="
           resetScore();
         ">Reset Score</button>
       </div>
     </div>
-    <script>
-      let randomNumber = 0;
-      let computerMove = '';
-      let playerMove = '';
-      let gameResult = '';
-      let wins = 0;
-      let losses = 0;
-      let draws = 0;
 
-      function getComputerMove() {
+    <!--The JavaScript code that makes the game work-->
+    <script>
+        //Global variables to keep track of the result and the scores
+        let result = '';
+        let wins = 0;
+        let losses = 0;
+        let draws = 0;
+      //This code will generate a move from the computer and compare it to the players choice and determine the result
+      function playGame(userInput) {
+        const computerMove = pickComputerMove();
+        if (userInput === 'rock') {
+          if (computerMove === 'rock') {
+            result = 'It is a draw!';
+          } else if (computerMove === 'paper') {
+            result = 'You lose!';
+          } else if (computerMove === 'scissors') {
+            result = 'You win!'
+          }
+        } else if (userInput === 'paper') {
+          if (computerMove === 'paper') {
+            result = 'It is a draw!';
+          } else if (computerMove ===  'scissors') {
+            result = 'You lose!';;
+          } else if (computerMove === 'rock') {
+            result = 'You win!';
+          }
+        } else if (userInput === 'scissors') {
+          if (computerMove === 'scissors') {
+            result = 'It is a draw!';
+          } else if (computerMove === 'rock') {
+            result = 'You lose!';
+          } else if (computerMove === 'paper') {
+            result = 'You win!';
+          }
+        }
+        //This code will update the on screen information based on the result
+        if (result === 'It is a draw!') {
+          draws += 1;
+          document.getElementById('draw-counter').innerText = draws;
+        } else if (result === 'You lose!') {
+          losses += 1;
+          document.getElementById('loss-counter').innerText = losses;
+        } else if (result === 'You win!') {
+          wins += 1;
+          document.getElementById('win-counter').innerText = wins;
+        }
+        document.getElementById('lets-play').innerText = `You picked ${userInput}. The computer picked ${computerMove}. ${result}`;
+      }
+      //This function is called by the playGame function. It will determine the computers move and return the value generated.
+      function pickComputerMove() {
         randomNumber = Math.floor(Math.random() * 3);
         if (randomNumber === 0) {
-          computerMove = 'rock';
+          return 'rock';
         } else if (randomNumber === 1) {
-          computerMove = 'paper';
+          return 'paper';
         } else if (randomNumber === 2) {
-          computerMove = 'scissors';
+          return 'scissors';
         }
       }
-
-      function playerPickedRock() {
-        if (computerMove === 'rock') {
-          result = 'Game is tied!';
-          draws += 1;
-          document.getElementById('draw-counter').innerText = draws;
-        } else if (computerMove === 'paper') {
-          result = 'You Lose!';
-          losses += 1;
-          document.getElementById('loss-counter').innerText = losses;
-        } else if (computerMove === 'scissors') {
-          result = 'You Win!';
-          wins += 1;
-          document.getElementById('win-counter').innerText = wins;
-        }
-      }
-
-      function playerPickedPaper() {
-        if (computerMove === 'paper') {
-          result = 'Game is tied!';
-          draws += 1;
-          document.getElementById('draw-counter').innerText = draws;
-        } else if (computerMove === 'scissors') {
-          result = 'You Lose!';
-          losses += 1;
-          document.getElementById('loss-counter').innerText = losses;
-        } else if (computerMove === 'rock') {
-          result = 'You Win!';
-          wins += 1;
-          document.getElementById('win-counter').innerText = wins;
-        }
-      }
-
-      function playerPickedScissors() {
-        if (computerMove === 'scissors') {
-          result = 'Game is tied!';
-          draws += 1;
-          document.getElementById('draw-counter').innerText = draws;
-        } else if (computerMove === 'rock') {
-          result = 'You Lose!';
-          losses += 1;
-          document.getElementById('loss-counter').innerText = losses;
-        } else if (computerMove === 'paper') {
-          result = 'You Win!';
-          wins += 1;
-          document.getElementById('win-counter').innerText = wins;
-        }
-      }
-
-      function displayResult () {
-        document.getElementById('lets-play').innerText = `You picked ${playerMove}. The Computer picked ${computerMove}. ${result}`;
-      }
-
+      //This code will reset the score unlesss all scores are already zero or the score has already been reset
       function resetScore() {
-        if (wins === 0 && losses === 0 && draws === 0) {
-          document.getElementById('lets-play').innerText = 'Score has already been reset. Let\'s Play!';
+        if (draws === 0 && losses === 0 && wins === 0) {
+          document.getElementById('lets-play').innerText = 'Score already reset! Let\'s play!';
         } else {
-          wins = 0;
-          losses = 0;
           draws = 0;
-          document.getElementById('lets-play').innerText = 'Score reset! Let\'s Play!';
-          document.getElementById('win-counter').innerText = wins;
-          document.getElementById('loss-counter').innerText = losses;
           document.getElementById('draw-counter').innerText = draws;
+          losses = 0;
+          document.getElementById('loss-counter').innerText = losses;
+          wins = 0;
+          document.getElementById('win-counter').innerText = wins;
+          document.getElementById('lets-play').innerText = 'Score reset! Let\'s play!';
         }
       }
     </script>
