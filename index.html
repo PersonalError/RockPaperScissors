@@ -10,7 +10,7 @@
   </head>
   <body>
     <!--A paragraph to display the version of the game-->
-    <p class="author-details">Scot Stewart | personalError | Rock Paper Scissors v1.2.5</p>
+    <p class="author-details">Scot Stewart | personalError | Rock Paper Scissors v1.3</p>
     <!-- The main container for all the game components-->
     <div class="game-container">
       <h1 class="main-title">Rock, Paper, Scissors!</h1>
@@ -60,9 +60,11 @@
     <script>
         //Global variables to keep track of the result and the scores
         let result = '';
-        let wins = 0;
-        let losses = 0;
-        let draws = 0;
+        const score = {
+          wins: 0,
+          losses: 0,
+          draws: 0
+        };
       //This code will generate a move from the computer and compare it to the players choice and determine the result
       function playGame(userInput) {
         const computerMove = pickComputerMove();
@@ -93,14 +95,14 @@
         }
         //This code will update the on screen information based on the result
         if (result === 'It is a draw!') {
-          draws += 1;
-          document.getElementById('draw-counter').innerText = draws;
+          score.draws += 1;
+          document.getElementById('draw-counter').innerText = score.draws;
         } else if (result === 'You lose!') {
-          losses += 1;
-          document.getElementById('loss-counter').innerText = losses;
+          score.losses += 1;
+          document.getElementById('loss-counter').innerText = score.losses;
         } else if (result === 'You win!') {
-          wins += 1;
-          document.getElementById('win-counter').innerText = wins;
+          score.wins += 1;
+          document.getElementById('win-counter').innerText = score.wins;
         }
         document.getElementById('lets-play').innerText = `You picked ${userInput}. The computer picked ${computerMove}. ${result}`;
       }
@@ -117,15 +119,15 @@
       }
       //This code will reset the score unlesss all scores are already zero or the score has already been reset
       function resetScore() {
-        if (draws === 0 && losses === 0 && wins === 0) {
+        if (score.draws === 0 && score.losses === 0 && score.wins === 0) {
           document.getElementById('lets-play').innerText = 'Score already reset! Let\'s play!';
         } else {
-          draws = 0;
-          document.getElementById('draw-counter').innerText = draws;
-          losses = 0;
-          document.getElementById('loss-counter').innerText = losses;
-          wins = 0;
-          document.getElementById('win-counter').innerText = wins;
+          score.draws = 0;
+          document.getElementById('draw-counter').innerText = score.draws;
+          score.losses = 0;
+          document.getElementById('loss-counter').innerText = score.losses;
+          score.wins = 0;
+          document.getElementById('win-counter').innerText = score.wins;
           document.getElementById('lets-play').innerText = 'Score reset! Let\'s play!';
         }
       }
