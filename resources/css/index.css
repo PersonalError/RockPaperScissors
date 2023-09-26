@@ -1,155 +1,224 @@
-/*Written by Scot Stewart | personalError*/
-
+/*Universal Styles*/
 body {
   background-color: hsl(0, 0%, 0%);
-  margin: 0;
+  background-image: url('../images/body-background.jpg');
   cursor: default;
 }
-p, button, h1 {
-  font-family: 'Oswold', sans-serif;
-  color: hsl(0, 0%, 90%);
-  font-weight: bold;
-  text-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+/*Font-Styles*/
+h1, p, button {
+  color: hsl(0, 0%, 100%);
 }
-.author-details {
+.version-title {
   position: relative;
+  font-family: 'Anton', sans-serif;
   font-size: 12px;
-  top: 5px;
-  left: 8px;
-}
-.game-container {
-  position: relative;
-  top: 50px;
-  background-color: hsl(0, 0%, 5%);
-  width: 800px;
-  height: 750px;
-  margin: 0 auto;
-  border-radius: 20px;
-  box-shadow: inset 0 0 10px hsl(0, 0%, 0%);
+  letter-spacing: 1px;
+  margin-left: 20px;
+  padding-top: 10px;
 }
 .main-title {
-  position: relative;
-  margin-top: 0;
-  margin-bottom: 50px;
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 38px;
+  letter-spacing: 4px;
   text-align: center;
-  top: 20px;
-  font-size: 42px;
+  text-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+  margin-top: 40px;
 }
-.choice-container {
-  width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.game-button {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  border: 4px solid hsl(0, 0%, 90%);
-  background-color: hsl(0, 0%, 0%);
-  cursor: pointer;
-  transition: border-width 0.15s, background-color 0.15s;
-}
-.game-button:hover {
-  border-width: 8px;
-}
-.game-button:active {
-  background-color: hsl(0, 0%, 10%);
-}
-.game-button:hover .choice-icon {
-  animation: icon-animation 2s ease-in-out infinite;
-}
-.game-button:hover ~ .choice-title {
-  animation: title-animation 2s infinite;
-}
-.choice-icon {
-  width: 150px;
-}
-.choice-title {
-  width: 0px;
-  margin-top: 12px;
-}
-.rock-container, .paper-container, .scissors-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  margin-left: 20px;
+.icon-title {
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 32px;
+  text-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+  position: absolute;
+  top: 150px;
+  margin-top: 0;
+  text-align: center;
+  opacity: 1;
 }
 #lets-play {
-  position: relative;
-  font-size: 24px;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 60px;
+  margin: 40px auto;
 }
 hr {
-  width: 20%;
-  border: 1px solid hsl(0, 0%, 90%);
-  box-shadow: 5px 5px 5px hsl(0, 0%, 20%);
+  margin: 20px auto;
+  height: 1px;
+  width: 500px;
+  border: none;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, white));
+}
+.stat-text {
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+/*Main Component Styles*/
+.game-container {
+  position: relative;
+  border-radius: 20px;
+  background-color: hsla(0, 0%, 20%, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+  width: 700px;
+  height: 800px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.game-button-container {
+  position: relative;
+  width: 650px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.game-button {
+  width: 160px;
+  height: 160px;
+  border: 2px solid hsl(0, 0%, 60%);
+  background-color: hsl(0, 0%, 0%);
+  border-radius: 80px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  vertical-align: middle;
+}
+.game-button:hover {
+  border-color: hsl(271, 76%, 53%);
+}
+.game-button:hover .rock-icon {
+  animation: iconAnimation 2s ease-in-out infinite;
+}
+.game-button:hover .paper-icon {
+  animation: iconAnimation 2s ease-in-out infinite;
+}
+.game-button:hover .scissors-icon {
+  animation: iconAnimation 2s ease-in-out infinite;
+}
+.game-button:hover .icon-title {
+  animation: titleAnimation 2s ease-in-out infinite;
+}
+.game-button:active {
+  opacity: 0.5;
+}
+.rock-icon {
+  width: 60px;
+}
+.paper-icon {
+  width: 90px;
+}
+.scissors-icon {
+  width: 80px;
 }
 .stats-container {
-  position: absolute;
-  top: 400px;
-  width: 100%;
-  text-align: center;
-}
-.stats {
-  font-size: 18px;
-  text-align: center;
+  margin-top: 50px;
 }
 .reset-button {
-  width: 180px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  margin: 20px auto;
+  width: 150px;
   height: 50px;
-  border-radius: 25px;
-  border: 4px solid white;
+  border: 2px solid hsl(0, 0%, 60%);
+  border-radius: 20px;
   background-color: hsl(0, 0%, 0%);
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  word-spacing: 6px;
   font-size: 18px;
-  margin-top: 30px;
-  margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.15s;
 }
 .reset-button:hover {
-  border-width: 6px;
+  border-color: hsl(271, 76%, 53%);
+  color: hsl(271, 76%, 53%);
 }
 .reset-button:active {
+  opacity: 0.7;
+}
+#alert-box {
+  position: absolute;
+  border: 2px solid hsl(0, 0%, 60%);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  width: 400px;
+  height: 200px;
+  left: 150px;
+  top: 450px;
+  background-color: hsla(0, 0%, 0%, 0.95);
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+  display: none;
+}
+.alert-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 40px;
+}
+.alert-button {
+  margin-left: 140px;
+  margin-right: 140px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
+  border: 1px solid hsl(0, 0%, 60%);
+  border-radius: 10px;
   background-color: hsl(0, 0%, 10%);
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
 }
-@keyframes icon-animation {
+.alert-button:hover {
+  color: hsl(271, 76%, 53%);
+}
+.alert-button:active {
+  opacity: 0.7;
+}
+/*Animations*/
+@keyframes iconAnimation {
   0% {
-    width: 150px;
+    transform: rotate(0deg);
   }
   25% {
-    width: 140px;
+    transform: rotate(-15deg);
   }
   50% {
-    width: 160px;
+    transform: rotate(15deg);
   }
   75% {
-    width: 140px;
+    transform: rotate(-15deg);
   }
   100% {
-    width: 150px;
+    transform: rotate(0deg);
   }
 }
-@keyframes title-animation {
+@keyframes titleAnimation {
   0% {
-    width: 0px;
+    opacity: 0.5;
   }
   25% {
-    width: 170px;
+    opacity: 0.6;
   }
   50% {
-    width: 130px;
+    opacity: 0.2;
   }
   75% {
-    width: 170px;
+    opacity: 0.9;
   }
   100% {
-    width: 0px;
+    opacity: 0.5;
   }
 }
